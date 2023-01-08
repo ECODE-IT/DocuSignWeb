@@ -2,7 +2,48 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles{
+    <link rel="stylesheet" href="~/css/index.css">
+}
+
+<div class="container-fluid">
+    <section class="content-wrapper row">
+        <div class="col-md-2" id="side-menu">
+            <button class="btn w-100 mx-1 my-3 main-button" id="start-now" type="button">START NOW</button>
+            <h5 class="text-uppercase text-start my-2">Heading</h5>
+            <div class="row">
+                <div class="col px-0">
+                    <ul class="list-group">
+                        <li class="list-group-item .active-item d-flex flex-row justify-content-around ">
+                            <i class="far fa-star d-flex align-items-center"></i><span>List Group Item 1</span>
+                        </li>
+                        <li class="list-group-item d-flex flex-row justify-content-around">
+                            <i class="far fa-star d-flex align-items-center"></i><span>List Group Item 1</span>
+                        </li>
+                        <li class="list-group-item d-flex flex-row justify-content-around">
+                            <i class="far fa-star d-flex align-items-center"></i><span>List Group Item 1</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10" id="main-content">
+            <div class="row">
+                <div class="col-12 p-3 border-top-0 border border-bottom">
+                    <div class="row">
+                        <div class="col-8 d-flex justify-content-between py-2">
+                            <h4>Heading</h4>
+                        </div>
+                        <div class="col d-flex align-items-center">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="far fa-star"></i>
+                                </span><input class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
