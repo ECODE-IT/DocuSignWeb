@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocuSignWeb", "DocuSignWeb\DocuSignWeb.csproj", "{C093A6EB-38D8-4449-9F6F-C16F93D002A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C093A6EB-38D8-4449-9F6F-C16F93D002A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C093A6EB-38D8-4449-9F6F-C16F93D002A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C093A6EB-38D8-4449-9F6F-C16F93D002A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C093A6EB-38D8-4449-9F6F-C16F93D002A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
