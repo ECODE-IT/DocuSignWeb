@@ -1,39 +1,55 @@
-﻿:root{
-  --light-grey: #f2f2f2;
-  --grey: #b7b7b7;
-  --theme-dark-blue:#3371b9;  
-  --theme-light-blue: #55abdf;
-  --theme-yellow: #ffbd59;
-  --theme-grey: #9c9c9c;
-}
-:root{
-  --color-background: var(--light-grey);
-  --color-background-selected: var(--grey);
+﻿@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+    /*define colors*/
+    --light-grey-1: #f2f2f2;
+    --light-grey-2: #adadad;
+    --theme-dark-blue: #3371b9;
+    --theme-light-blue: #55abdf;
+    --theme-yellow: #ffbd59;
+    --theme-grey: #9c9c9c;
+
+    /*define fonts*/
+    --lato-font: 'Lato', sans-serif;
 }
 
-html {
-  
+:root {
+    /*fonts*/
+    --color-background: var(--light-grey-1);
+    --color-background-selected: var(--light-grey-2);
+
+    /*colors*/
+    --app-font: var(--lato-font);
 }
-header{
-  height: 60px;
-  position: fixed;
-  top: 0;
-  width: 100%;
+
+header {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.navbar-nav > .active{
+    border-bottom: var(--color-background-selected) 2px solid;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  margin-top: 60px;
-  height: 100%;
-}
-.footer {
-  background-color: white;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    margin-top: 60px;
+    height: 100%;
+    font-family: var(--app-font);
 }
 
+.footer {
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
 
