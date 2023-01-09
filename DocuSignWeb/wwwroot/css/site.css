@@ -28,9 +28,7 @@ header {
     top: 0;
     width: 100%;
 }
-.navbar-nav > .active{
-    border-bottom: var(--color-background-selected) 2px solid;
-}
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;

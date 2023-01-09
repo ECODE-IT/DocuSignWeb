@@ -1,0 +1,34 @@
+﻿@using DocuSignWeb.ViewComponents
+@model IEnumerable<DocuSignWeb.ViewComponents.NavLink>
+<style>
+   .navbar-nav > .active{
+       border-bottom: var(--color-background-selected) 2px solid;
+   }
+</style>
+<header>
+    <nav class="navbar navbar-light navbar-expand-md border border-bottom">
+        <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+            <span>Brand</span>
+        </a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+            <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav">
+                @foreach(NavLink link in Model)
+                {
+                    <li class="@("nav-item " + (link.IsActive ? "active":""))">
+                        <a class="nav-link" asp-controller="@link.Controller" asp-action="@link.Action">
+                            @link.Text
+                        </a>
+                    </li>
+                }
+            </ul>
+            <div class="profile ml-auto px-2">
+                <div class="rounded-circle bg-secondary text-white">
+                    <div class="p-2 text-uppercase">SD</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

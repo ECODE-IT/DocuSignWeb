@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DocuSignWeb.ViewComponents
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -7,33 +8,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/lib/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="~/css/site.css"/>
-    @RenderSection("Styles", required: false)
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-light navbar-expand-md border border-bottom">
-        <a class="navbar-brand" href="#">
-            <span>Brand</span>
-        </a>
-        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
-            <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">First Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Second Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Third Item</a>
-                </li>
-            </ul>
-            <button class="btn btn-primary ml-auto" type="button">Button</button>
-        </div>
-    </nav>
-</header>
+@await Component.InvokeAsync(typeof(HeaderViewComponent));
 
 @RenderBody()
 
@@ -45,6 +23,6 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-@RenderSection("Scripts", required: false)
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
