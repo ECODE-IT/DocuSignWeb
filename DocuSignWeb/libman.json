@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "vue@3.2.45",
+      "destination": "wwwroot/lib/vue/",
+      "files": [
+        "dist/vue.global.js",
+        "dist/vue.esm-browser.js"
+      ]
+    }
+  ]
+}

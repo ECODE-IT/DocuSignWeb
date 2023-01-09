@@ -8,4 +8,9 @@
       <None Include="wwwroot\index.html" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\vue\dist\vue.esm-browser.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\vue\dist\vue.global.js" />
+    </ItemGroup>
+
 </Project>
