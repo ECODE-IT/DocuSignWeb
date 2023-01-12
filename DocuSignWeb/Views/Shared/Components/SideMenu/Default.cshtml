@@ -1,0 +1,16 @@
+﻿<button class="btn w-100 mx-1 my-4 main-button" id="start-now" type="button">START NOW</button>
+<div v-for="category in sideMenuCategories">
+    <h5 class="text-uppercase text-start my-3 font-weight-bold">{{category.name}}</h5>
+    <div class="row">
+        <div class="col px-0">
+            <ul class="list-group">
+                <li v-for="menuItem in category.menuItems" v-on:click="selectMenuItem(category, menuItem)"
+                    class="list-group-item d-flex flex-row justify-content-around"
+                    v-bind:class="menuItem.isActive ? ' selected':''">
+                    <i class="fas d-flex align-items-center col-1 pl-0 " v-bind:class="menuItem.icon"></i>
+                    <span class="col-11">{{menuItem.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
