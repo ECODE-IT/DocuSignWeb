@@ -5,3 +5,8 @@
 .cursor-pointer {
     cursor: pointer;
 }
+.border-dashed {
+    border-style: dashed !important;
+}
+input[type="checkbox"]{
+}

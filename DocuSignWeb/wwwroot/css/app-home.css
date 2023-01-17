@@ -23,7 +23,7 @@ body {
 
 .content-wrapper{
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     top:60px;
     width: 100%;
     height: calc(100% - 60px);

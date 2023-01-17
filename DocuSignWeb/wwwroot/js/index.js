@@ -62,6 +62,12 @@ const app = createApp({
         }
     },
     methods: {
+        showModal() {
+            $('#modal').show();
+        },
+        hideModal() {
+            $('#modal').hide();
+        },
         selectMenuItem(category, menuItem) {
             if (category.name === this._activeMenuItem.categoryName
                 && menuItem.name === this._activeMenuItem.itemName) {

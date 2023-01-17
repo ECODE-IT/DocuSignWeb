@@ -55,3 +55,9 @@
     width: calc(9*var(--inbox-t-col-width));
 }
 /*Content end*/
+
+#modal{
+    position: fixed !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
