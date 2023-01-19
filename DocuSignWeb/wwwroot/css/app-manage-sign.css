@@ -8,4 +8,6 @@
     top: 10px;
     left: 10px;
 }
-
+#page-summary, #middle-section, #side-menu{
+    height: calc(100vh - var(--header-height)*3.25);
+}

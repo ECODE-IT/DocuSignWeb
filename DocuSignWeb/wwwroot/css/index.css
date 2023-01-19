@@ -8,9 +8,13 @@
     border-style: dashed !important;
 }
 .overflow-y, .overflow-y-scroll{
-    overflow-y: scroll;
-    height: calc(100vh - var(--header-height)*3.25);
     overflow-x: hidden;
+}
+.overflow-y{
+    overflow-y: auto;
+}
+.overflow-y-scroll{
+    overflow-y: scroll;
 }
 .app-bg-color{
     background-color: var(--color-bg);
