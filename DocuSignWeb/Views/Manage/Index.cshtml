@@ -1,0 +1,125 @@
+﻿@using DocuSignWeb.ViewComponents
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/app-manage.css">
+    <link rel="stylesheet" href="~/css/app-side-menu.css">
+    <link rel="stylesheet" href="~/css/app-documents.css">
+}
+
+<div class="container-fluid" id="main">
+    <section class="content-wrapper row">
+        <div class="col-md-2" id="side-menu">
+            @await Component.InvokeAsync(typeof(SideMenuViewComponent))
+        </div>
+        <div class="col-md-10" id="middle-section">
+            <div class="row">
+                <div id="documents-header" class="col-12 py-3 pl-4 pr-5 border-top-0 border border-bottom">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-between py-2">
+                            <h4 class="font-weight-bold">{{activeMenuItem.itemName}}</h4>
+                        </div>
+                        <div class="ml-auto px-3 d-flex align-items-center">
+                            <div class="input-group border rounded">
+                                <span class="input-group-text border-0 bg-transparent">
+                                    <i class="fas fa-search"></i>
+                                </span><input class="form-control border-0" type="text">
+                            </div>
+                        </div>
+                        <div class="px-2 d-flex align-items-center justify-content-end">
+                            <div class="row">
+                                <span role="button" class="cursor-pointer input-group-text border-0 bg-transparent">
+                                    <i class="fas fa-sliders-h"></i>
+                                </span>
+                                <span role="button" class="cursor-pointer text-uppercase ">filters</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="inbox" class="col-12">
+                    <div class="row border border-top-0 py-2">
+                        <div class="t-col t-col-1">
+                            &nbsp;
+                        </div>
+                        <div class="t-col t-col-1 ">
+                            &nbsp;
+                        </div>
+                        <div class="t-col t-col-8 ">
+                            <div class="font-weight-bold">Subject</div>
+                        </div>
+                        <div class="t-col t-col-6">
+                            <div class="font-weight-bold">Status</div>
+                        </div>
+                        <div class="t-col t-col-2 ">
+                            <div class="font-weight-bold">
+                                Last Change
+                                <span class="ml-2">
+                                    <i class="fas fa-caret-down fa-lg text-muted"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="t-col t-col-2">
+
+                        </div>
+                    </div>
+                    <div v-for="doc in documents" class="row border border-top-0 py-3">
+                        <div class="t-col t-col-1 align-items-center">
+                            <input class="form-control form-control-sm" v-bind:checked="doc.checked" type="checkbox">
+                        </div>
+                        <div class="t-col t-col-1 ">
+                            <span v-if="doc.alert">
+                                <i class="fas fa-lg text-primary fa-exclamation-circle"></i>
+                            </span>
+                        </div>
+                        <div class="t-col t-col-8 ">
+                            <div class="font-weight-bold">{{doc.subject}}</div>
+                            <div>To: {{doc.to}}</div>
+                        </div>
+                        <div class="t-col t-col-6">
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="progress">
+                                        <div class="progress-bar" aria-valuenow="50" aria-valuemin="0"
+                                             aria-valuemax="100" v-bind:style="'width: '
+                                                                                    + doc.status.percentageCompleted +'%;'">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    {{doc.status.completed}}/{{doc.status.total}} done
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">{{doc.status.info}}</div>
+                            </div>
+                        </div>
+                        <div class="t-col t-col-2 ">
+                            <div class="">{{doc.lastChange.date}}</div>
+                            <div class="text-muted">{{doc.lastChange.time}}</div>
+                        </div>
+                        <div class="t-col t-col-2 align-items-end pr-3">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" aria-expanded="false"
+                                        data-bs-toggle="dropdown" type="button">
+                                    Sign
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">First Item</a>
+                                    <a class="dropdown-item" href="#">Second Item</a>
+                                    <a class="dropdown-item" href="#">Third Item</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts
+{
+    <script type="module" src="js/index.js"></script>
+}

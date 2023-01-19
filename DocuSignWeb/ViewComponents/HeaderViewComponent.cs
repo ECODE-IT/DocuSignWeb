@@ -10,8 +10,8 @@ namespace DocuSignWeb.ViewComponents
         private readonly List<NavLink> _navLinks = new List<NavLink>
         {
             new NavLink { Controller = "Home", Action = "Index", Text = "Home" },
-            new NavLink { Controller = "#", Action = "#", Text = "Manage" },
-            new NavLink { Controller = "#", Action = "#", Text = "Reports" },
+            new NavLink { Controller = "Manage", Action = "Index", Text = "Manage" },
+            new NavLink { Controller = "Reports", Action = "Index", Text = "Reports" },
         };
         
         public async Task<IViewComponentResult> InvokeAsync()
@@ -30,7 +30,7 @@ namespace DocuSignWeb.ViewComponents
         {
             foreach (var navLink in _navLinks)
             {
-                if (navLink.Controller == currentController && navLink.Action == currentAction)
+                if (navLink.Controller == currentController)
                 {
                     navLink.IsActive = true;
                 }

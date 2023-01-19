@@ -13,7 +13,7 @@ body {
 
 .footer {
     background-color: white;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     bottom: 0;
     width: 100%;
@@ -34,9 +34,10 @@ body {
     overflow-y: scroll;
     height: 100%;
 }
-#documents{
-    overflow-y: scroll;
+#middle-section{
+    overflow-y: auto;
     height: 100%;
+    overflow-x: hidden;
 }
 
 

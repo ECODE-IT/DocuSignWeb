@@ -9,16 +9,21 @@ using DocuSignWeb.Models;
 
 namespace DocuSignWeb.Controllers
 {
-    public class HomeController : Controller
+    public class ManageController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ManageController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ManageController(ILogger<ManageController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        
+        public IActionResult Upload()
         {
             return View();
         }

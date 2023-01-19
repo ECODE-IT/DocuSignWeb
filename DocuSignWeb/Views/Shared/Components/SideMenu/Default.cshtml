@@ -1,4 +1,4 @@
-﻿<button class="btn w-100 mx-1 my-4 main-button" v-on:click="showModal()" id="start-now" type="button">START NOW</button>
+﻿<a class="btn w-100 mx-1 my-4 main-button" asp-controller="Manage" asp-action="Upload" id="start-now" type="button">START NOW</a>
 <div v-for="category in sideMenuCategories">
     <h5 class="text-uppercase text-start my-3 font-weight-bold">{{category.name}}</h5>
     <div class="row">
