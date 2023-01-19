@@ -27,6 +27,11 @@ namespace DocuSignWeb.Controllers
         {
             return View();
         }
+        
+        public IActionResult Sign()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
