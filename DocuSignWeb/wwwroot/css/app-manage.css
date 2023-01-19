@@ -2,35 +2,19 @@
     --header-height: 60px;
     --footer-height: 60px;
 }
+body{
+    max-height: 100vh;
+}
 header {
     height: var(--header-height);
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
-
-body {
-    overflow: hidden;
-    /* Margin bottom by footer height */
-    margin-bottom: var(--footer-height);
-    margin-top: var(--header-height);
+footer {
+    line-height: var(--footer-height);
 }
-
-.footer {
-    background-color: white;
-    position: fixed;
-    z-index: 1;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: var(--footer-height); /* Vertically center the text there */
-}
-
-.content-wrapper{
+#main {
     position: absolute;
-    z-index: 1;
-    top:var(--header-height);
+    top: var(--header-height);
     width: 100%;
-    height: calc(100% - var(--footer-height));
+    height: calc(100vh - var(--header-height));
     padding-bottom: var(--footer-height);
 }

@@ -1,5 +1,4 @@
 ﻿body{
-    height: 100%;
     font-family: var(--app-font);
 }
 .cursor-pointer {
@@ -10,7 +9,7 @@
 }
 .overflow-y, .overflow-y-scroll{
     overflow-y: scroll;
-    height: inherit;
+    height: calc(100vh - var(--header-height)*3.25);
     overflow-x: hidden;
 }
 .app-bg-color{
