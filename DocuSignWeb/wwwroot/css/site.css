@@ -7,6 +7,7 @@
     --theme-dark-blue: #3371b9;
     --theme-light-blue: #55abdf;
     --theme-yellow: #ffbd59;
+    --theme-greyish-yellow: #ffecc5;
     --theme-grey: #9c9c9c;
 
     /*define fonts*/
@@ -15,8 +16,9 @@
 
 :root {
     /*fonts*/
-    --color-background: var(--light-grey-1);
-    --color-background-selected: var(--light-grey-2);
+    --color-bg: var(--light-grey-1);
+    --color-bg-selected: var(--light-grey-2);
+    --color-bg-warning:var(--theme-greyish-yellow);
 
     /*colors*/
     --app-font: var(--lato-font);

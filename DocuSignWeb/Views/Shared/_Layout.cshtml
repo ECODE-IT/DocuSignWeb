@@ -9,11 +9,11 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-@await Component.InvokeAsync(typeof(HeaderViewComponent));
+@await Component.InvokeAsync(typeof(HeaderViewComponent))
 
 @RenderBody()
 
-<footer class="border-top footer text-muted">
+<footer class="border-top text-muted footer">
     <div class="container">
         &copy; 2023 - DocuSignWeb - <a asp-area="" asp-controller="Manage" asp-action="Privacy">Privacy</a>
     </div>

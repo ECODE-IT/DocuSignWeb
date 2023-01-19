@@ -51,7 +51,7 @@ namespace DocuSignWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Manage}/{action=Index}/{id?}");
+                    pattern: "{controller=Manage}/{action=Sign}/{id?}");
             });
         }
     }

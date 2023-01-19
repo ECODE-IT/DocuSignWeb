@@ -11,10 +11,10 @@
 
 <div class="container-fluid" id="main">
     <section class="content-wrapper row">
-        <div class="col-md-2" id="side-menu">
+        <div class="col-md-2 app-bg-color overflow-y" id="side-menu">
             @await Component.InvokeAsync(typeof(SideMenuViewComponent))
         </div>
-        <div class="col-md-10" id="middle-section">
+        <div class="col-md-10 overflow-y" id="middle-section">
             <div class="row">
                 <div id="documents-header" class="col-12 py-3 pl-4 pr-5 border-top-0 border border-bottom">
                     <div class="row">
@@ -121,5 +121,5 @@
 
 @section Scripts
 {
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="~/js/manage-index.js"></script>
 }

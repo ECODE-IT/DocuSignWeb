@@ -1,125 +1,81 @@
-@using DocuSignWeb.ViewComponents
 @{
     ViewData["Title"] = "Home Page";
 }
 
 @section Styles{
     <link rel="stylesheet" href="~/css/app-manage.css">
-    <link rel="stylesheet" href="~/css/app-side-menu.css">
-    <link rel="stylesheet" href="~/css/app-documents.css">
+    <link rel="stylesheet" href="~/css/app-manage-sign.css">
 }
 
-<div class="container-fluid" id="main">
-    <section class="content-wrapper row">
-        <div class="col-md-2" id="side-menu">
-            @await Component.InvokeAsync(typeof(SideMenuViewComponent))
+<div class="container-fluid content-wrapper row" id="main">
+    <div class="col-12 d-flex flex-row text-uppercase justify-content-end border-bottom">
+            <button class="btn btn-light m-2">Back</button>
+            <button class="btn btn-warning rounded-0 m-2">Send</button>
         </div>
-        <div class="col-md-10" id="middle-section">
+    <div class="col-md-2 px-0 overflow-y-scroll app-bg-color-2 d-flex flex-row" id="side-menu">
+        <div class="h-100 col-2 px-0">
+            <div class="w-100 cursor-pointer border-bottom p-2 py-3 
+                            d-flex justify-content-center align-items-center`"
+                 v-for="field in fields"
+                 v-on:click="setActiveField(field)"
+                 v-bind:class="field.active ? 'bg-white':''">
+                <i v-bind:class="field.icon"></i>
+            </div>
+        </div>
+        <div class="h-100 col-10 bg-white">
+            <div class="text-uppercase text-start my-3 font-weight-bold">{{activeField.name}}</div>
             <div class="row">
-                <div id="documents-header" class="col-12 py-3 pl-4 pr-5 border-top-0 border border-bottom">
-                    <div class="row">
-                        <div class="col-6 d-flex justify-content-between py-2">
-                            <h4 class="font-weight-bold">{{activeMenuItem.itemName}}</h4>
-                        </div>
-                        <div class="ml-auto px-3 d-flex align-items-center">
-                            <div class="input-group border rounded">
-                                <span class="input-group-text border-0 bg-transparent">
-                                    <i class="fas fa-search"></i>
-                                </span><input class="form-control border-0" type="text">
-                            </div>
-                        </div>
-                        <div class="px-2 d-flex align-items-center justify-content-end">
-                            <div class="row">
-                                <span role="button" class="cursor-pointer input-group-text border-0 bg-transparent">
-                                    <i class="fas fa-sliders-h"></i>
-                                </span>
-                                <span role="button" class="cursor-pointer text-uppercase ">filters</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col px-0">
+                    <ul class="list-group">
+                        <li v-for="option in activeField.options" v-on:click="option.onClick"
+                            class="list-group-item border-0 cursor-pointer bg-transparent
+                                                                             d-flex flex-row justify-content-start px-1">
+                            <i class="fas d-flex align-items-center bg-warning p-1 mx-2"
+                               v-bind:class="option.icon">
+                            </i>
+                            <span class="">{{option.name}}</span>
+                        </li>
+                    </ul>
                 </div>
-                <div id="inbox" class="col-12">
-                    <div class="row border border-top-0 py-2">
-                        <div class="t-col t-col-1">
-                            &nbsp;
-                        </div>
-                        <div class="t-col t-col-1 ">
-                            &nbsp;
-                        </div>
-                        <div class="t-col t-col-8 ">
-                            <div class="font-weight-bold">Subject</div>
-                        </div>
-                        <div class="t-col t-col-6">
-                            <div class="font-weight-bold">Status</div>
-                        </div>
-                        <div class="t-col t-col-2 ">
-                            <div class="font-weight-bold">
-                                Last Change
-                                <span class="ml-2">
-                                    <i class="fas fa-caret-down fa-lg text-muted"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="t-col t-col-2">
-
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 overflow-y" id="middle-section">
+        <div class="row">
+            <div class="col-12  app-bg-color-2">
+                <div class="row justify-content-center" id="docImagesContainer">
+                    <div v-for="signatures in components.signatures" class="draggable 
+                            btn btn-warning border-dark">
+                        <div class="font-weight-bold">Sign</div>
+                        <div>
+                            <i class="fas fa-download"></i>
                         </div>
                     </div>
-                    <div v-for="doc in documents" class="row border border-top-0 py-3">
-                        <div class="t-col t-col-1 align-items-center">
-                            <input class="form-control form-control-sm" v-bind:checked="doc.checked" type="checkbox">
-                        </div>
-                        <div class="t-col t-col-1 ">
-                            <span v-if="doc.alert">
-                                <i class="fas fa-lg text-primary fa-exclamation-circle"></i>
-                            </span>
-                        </div>
-                        <div class="t-col t-col-8 ">
-                            <div class="font-weight-bold">{{doc.subject}}</div>
-                            <div>To: {{doc.to}}</div>
-                        </div>
-                        <div class="t-col t-col-6">
-                            <div class="row">
-                                <div class="col-9">
-                                    <div class="progress">
-                                        <div class="progress-bar" aria-valuenow="50" aria-valuemin="0"
-                                             aria-valuemax="100" v-bind:style="'width: '
-                                                                                    + doc.status.percentageCompleted +'%;'">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    {{doc.status.completed}}/{{doc.status.total}} done
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">{{doc.status.info}}</div>
-                            </div>
-                        </div>
-                        <div class="t-col t-col-2 ">
-                            <div class="">{{doc.lastChange.date}}</div>
-                            <div class="text-muted">{{doc.lastChange.time}}</div>
-                        </div>
-                        <div class="t-col t-col-2 align-items-end pr-3">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" aria-expanded="false"
-                                        data-bs-toggle="dropdown" type="button">
-                                    Sign
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">First Item</a>
-                                    <a class="dropdown-item" href="#">Second Item</a>
-                                    <a class="dropdown-item" href="#">Third Item</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div v-for="image in docImages" class="col-11 my-2">
+                        <img v-bind:src="'/images/'+image" alt="" class="img-fluid border border-dark"/>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="col-md-2 overflow-y app-bg-color-2" id="page-summary">
+        <div class="row">
+            <div class="col-12">
+                <div class="row justify-content-center">
+                    <div v-for="image in docImages" class="col-11 my-2">
+                        <img v-bind:src="'/images/'+image" alt="" class="img-thumbnail"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-row text-uppercase justify-content-end border-top">
+        <button class="btn btn-light m-2">Back</button>
+        <button class="btn btn-warning rounded-0 m-2">Send</button>
+    </div>
 </div>
 
 @section Scripts
 {
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="~/js/manage-sign.js"></script>
 }

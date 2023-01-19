@@ -8,5 +8,14 @@
 .border-dashed {
     border-style: dashed !important;
 }
-input[type="checkbox"]{
+.overflow-y, .overflow-y-scroll{
+    overflow-y: scroll;
+    height: inherit;
+    overflow-x: hidden;
+}
+.app-bg-color{
+    background-color: var(--color-bg);
+}
+.app-bg-color-2{
+    background-color: var(--color-bg-warning);
 }

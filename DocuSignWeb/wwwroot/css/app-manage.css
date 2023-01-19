@@ -1,14 +1,19 @@
-﻿header {
-    height: 60px;
+﻿:root{
+    --header-height: 60px;
+    --footer-height: 60px;
+}
+header {
+    height: var(--header-height);
     position: fixed;
     top: 0;
     width: 100%;
 }
 
 body {
+    overflow: hidden;
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    margin-top: 60px;
+    margin-bottom: var(--footer-height);
+    margin-top: var(--header-height);
 }
 
 .footer {
@@ -18,26 +23,14 @@ body {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: var(--footer-height); /* Vertically center the text there */
 }
 
 .content-wrapper{
     position: absolute;
     z-index: 1;
-    top:60px;
+    top:var(--header-height);
     width: 100%;
-    height: calc(100% - 60px);
-    padding-bottom: 60px;
+    height: calc(100% - var(--footer-height));
+    padding-bottom: var(--footer-height);
 }
-#side-menu{
-    background-color: var(--color-background);
-    overflow-y: scroll;
-    height: 100%;
-}
-#middle-section{
-    overflow-y: auto;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-
