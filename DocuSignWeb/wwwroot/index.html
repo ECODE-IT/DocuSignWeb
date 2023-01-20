@@ -10,69 +10,9 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-light navbar-expand-md border border-bottom">
-        <a class="navbar-brand" href="#">
-            <span>Brand</span>
-        </a>
-        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
-            <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="#">First Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Second Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Third Item</a>
-                </li>
-            </ul>
-            <div class="profile ml-auto px-2">
-                <div class="rounded-circle bg-secondary text-white">
-                    <div class="p-2 text-uppercase">SD</div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
-<div class="container-fluid" id="main">
-    <section class="content-wrapper row">
-        <div class="col-md-2" id="side-menu">
-            <div class="row">
-                <div class="h-100 col-2">
-                </div>
-                <div class="h-100 col-10">
-                    <div class="lead text-uppercase text-start my-3 font-weight-bold">{{category.name}}</div>
-                    <div class="row">
-                        <div class="col px-0">
-                            <ul class="list-group">
-                                <li v-for="menuItem in category.menuItems" v-on:click=""
-                                    class="list-group-item d-flex flex-row justify-content-around">
-                                    <i class="fas d-flex align-items-center col-1 pl-0 " v-bind:class="menuItem.icon"></i>
-                                    <span class="col-11">{{menuItem.name}}</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-10" id="middle-section">
-            <div class="row">
 
-            </div>
-        </div>
-    </section>
-</div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2023 - DocuSignWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
+
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/site.js" asp-append-version="true"></script>
