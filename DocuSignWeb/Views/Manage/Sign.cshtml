@@ -44,30 +44,42 @@
         </div>
     </div>
     <div class="row d-flex align-items-stretch border-top" style="flex:1;">
-        <div class="col-md-2 px-0 overflow-y-scroll app-bg-color-2 d-flex flex-row" id="side-menu">
-            <div class="h-100 col-2 px-0">
-                <div class="w-100 cursor-pointer border-bottom p-2 py-3 
-                                d-flex justify-content-center align-items-center`"
-                     v-for="field in fields"
-                     v-on:click="setActiveField(field)"
-                     v-bind:class="field.active ? 'bg-white':''">
-                    <i v-bind:class="field.icon"></i>
+        <div class="col-md-2 overflow-y-scroll d-flex flex-column  app-bg-color-2" id="side-menu">
+            <div class="row bg-white">
+                <div class="col-12 px-0">
+                    <div class="input-group border rounded-0">
+                        <span class="input-group-text border-0 bg-transparent">
+                            <i class="fas fa-search"></i>
+                        </span><input placeholder="Search Fields" class="form-control border-0" type="text">
+                        <span class="ml-auto p-2"><i class="fas fa-times"></i></span>
+                    </div>
                 </div>
             </div>
-            <div class="h-100 col-10 bg-white">
-                <div class="text-uppercase text-start my-3 font-weight-bold">{{activeField.name}}</div>
-                <div class="row">
-                    <div class="col px-0">
-                        <ul class="list-group">
-                            <li v-for="option in activeField.options" v-on:click="option.onClick"
-                                class="list-group-item border-0 cursor-pointer bg-transparent
-                                                                                 d-flex flex-row justify-content-start px-1">
-                                <i class="fas d-flex align-items-center bg-warning p-1 mx-2"
-                                   v-bind:class="option.icon">
-                                </i>
-                                <span class="">{{option.name}}</span>
-                            </li>
-                        </ul>
+            <div class="row d-flex align-items-stretch flex-grow-1">
+                <div class="col-2 px-0">
+                    <div class="w-100 cursor-pointer border-bottom p-2 py-3 
+                                                d-flex justify-content-center align-items-center`"
+                         v-for="field in fields"
+                         v-on:click="setActiveField(field)"
+                         v-bind:class="field.active ? 'bg-white':''">
+                        <i v-bind:class="field.icon"></i>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="text-uppercase text-start my-3 font-weight-bold">{{activeField.name}}</div>
+                    <div class="row">
+                        <div class="col px-0">
+                            <ul class="list-group">
+                                <li v-for="option in activeField.options" v-on:click="option.onClick"
+                                    class="list-group-item border-0 cursor-pointer bg-transparent
+                                                                                                 d-flex flex-row justify-content-start px-1">
+                                    <i class="fas d-flex align-items-center bg-warning p-1 mx-2"
+                                       v-bind:class="option.icon">
+                                    </i>
+                                    <span class="">{{option.name}}</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
