@@ -6,14 +6,44 @@
     <link rel="stylesheet" href="~/css/app-manage.css">
     <link rel="stylesheet" href="~/css/app-manage-sign.css">
 }
+
 <div class="container-fluid" id="main">
-    <div class="row">
-        <div class="col-12 d-flex flex-row text-uppercase justify-content-end border-bottom">
-                    <button class="btn btn-light m-2">Back</button>
-                    <button class="btn btn-warning rounded-0 m-2">Send</button>
+    <div class="row py-2" id="toolbar">
+        <div class="col-2">
+            <div class="dropdown">
+                <button class="btn w-100 text-left btn-light dropdown-toggle-split border border-dark rounded-0">
+                    user
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Logout</a>
                 </div>
+            </div>
+        </div>
+        <div class="col-8 d-flex justify-content-center">
+            @*Tool icons*@
+            <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-undo-alt"></i>
+            </button>
+            <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-redo-alt"></i>
+            </button>
+            <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-copy"></i>
+            </button>
+            <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-paste"></i>
+            </button>
+            <button class="btn btn-light border-right dropdown-toggle rounded-0 d-flex justify-content-center align-items-center">
+                137%
+            </button>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-light border border-dark rounded-0">SHORTCUTS</button>
+        </div>
     </div>
-    <div class="row d-flex align-items-stretch" style="flex:1;">
+    <div class="row d-flex align-items-stretch border-top" style="flex:1;">
         <div class="col-md-2 px-0 overflow-y-scroll app-bg-color-2 d-flex flex-row" id="side-menu">
             <div class="h-100 col-2 px-0">
                 <div class="w-100 cursor-pointer border-bottom p-2 py-3 
@@ -74,9 +104,9 @@
     </div>
     <div class="row">
         <div class="col-12 d-flex flex-row text-uppercase justify-content-end border-top">
-                <button class="btn btn-light m-2">Back</button>
-                <button class="btn btn-warning rounded-0 m-2">Send</button>
-            </div>
+            <button class="btn btn-light m-2">Back</button>
+            <button class="btn btn-warning rounded-0 m-2">Send</button>
+        </div>
     </div>
 </div>
 

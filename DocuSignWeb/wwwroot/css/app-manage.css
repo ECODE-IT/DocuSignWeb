@@ -27,3 +27,6 @@ footer {
     overflow-y: scroll;
     height: calc(100vh - var(--header-height)*3)
 }
+#toolbar button{
+    font-size: 0.9em;
+}
