@@ -57,6 +57,9 @@ const app = createApp({
 
             //update active field
             this._fields[field.name] = field;            
+        },
+        closeModal(){
+            $("#adoptSignModal").modal('hide');
         }
     }
 });

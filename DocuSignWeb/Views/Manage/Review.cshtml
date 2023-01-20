@@ -1,0 +1,60 @@
+@{
+    ViewBag.Title = "Review";
+    Layout = "Layout";
+}
+
+<div class="container-fluid" id="main">
+    <div class="row fixed-top border-bottom">
+        <div class="col-12">
+            <div class="row px-3 py-2 bg-primary">
+                    <div class="col-12 d-flex flex-row">
+                        <div class="my-auto text-white">Please review the documents below</div>
+                        <button class="ml-auto btn btn-warning rounded-0 text-uppercase">FINISH</button>
+                        <div class="dropdown ml-2">
+                            <button class="btn dropdown-toggle text-uppercase text-white">Other actions</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2 justify-content-center bg-white" id="toolbar">
+                    <div class="col-8 d-flex justify-content-center">
+                        @*Tool icons*@
+                        <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-undo-alt"></i>
+                        </button>
+                        <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-redo-alt"></i>
+                        </button>
+                        <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-paste"></i>
+                        </button>
+                        <button class="btn btn-light border-right dropdown-toggle rounded-0 d-flex justify-content-center align-items-center">
+                            137%
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row d-flex align-items-stretch  justify-content-center 
+            overflow-y h-100 flex-grow-1 app-bg-color" 
+         style="margin-top: 13vh;">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row justify-content-center" id="docImagesContainer">
+                        <div v-for="image in docImages" class="col-11 my-2">
+                            <img v-bind:src="'/images/'+image" alt="" class="img-fluid border border-dark"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="module" src="~/js/manage-review.js"></script>
+}
