@@ -10,7 +10,7 @@
 }
 
 <div class="container-fluid" id="main">
-    <section class="content-wrapper row">
+    <div class="row d-flex align-items-stretch" style="flex: 1;">
         <div class="col-md-2 app-bg-color overflow-y" id="side-menu">
             @await Component.InvokeAsync(typeof(SideMenuViewComponent))
         </div>
@@ -101,10 +101,11 @@
                         </div>
                         <div class="t-col t-col-2 align-items-end pr-3">
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" aria-expanded="false"
+                                <a asp-action="Sign" asp-controller="Manage" 
+                                   class="btn btn-primary dropdown-toggle" aria-expanded="false"
                                         data-bs-toggle="dropdown" type="button">
                                     Sign
-                                </button>
+                                </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">First Item</a>
                                     <a class="dropdown-item" href="#">Second Item</a>
@@ -116,7 +117,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </div>
 
 @section Scripts

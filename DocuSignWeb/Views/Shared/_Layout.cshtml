@@ -12,9 +12,14 @@
 @await Component.InvokeAsync(typeof(HeaderViewComponent))
 
 @RenderBody()
-
-<footer class="container border-top text-muted fixed-bottom">
-    &copy; 2023 - DocuSignWeb - <a asp-area="" asp-controller="Manage" asp-action="Privacy">Privacy</a>
+<footer class="fixed-bottom border-top d-flex align-items-center">
+    <div class="my-auto container-fluid  text-muted bg-white">
+        <div class="row  ">
+            <div class="col-12">
+                <span>© 2023 - DocuSignWeb - <a href="/Manage/Privacy">Privacy</a></span>
+            </div>
+        </div>
+    </div>
 </footer>
 @await Html.PartialAsync("_ScriptsPartial")
 @await RenderSectionAsync("Scripts", required: false)

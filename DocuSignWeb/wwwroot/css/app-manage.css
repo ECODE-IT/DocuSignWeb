@@ -3,7 +3,9 @@
     --footer-height: 60px;
 }
 body{
+    height: 100vh;
     max-height: 100vh;
+    overflow: hidden;
 }
 header {
     height: var(--header-height);
@@ -17,4 +19,11 @@ footer {
     width: 100%;
     height: calc(100vh - var(--header-height));
     padding-bottom: var(--footer-height);
+}
+#middle-section, #side-menu{
+    height: calc(100vh - var(--header-height));
+}
+#upload-section{
+    overflow-y: scroll;
+    height: calc(100vh - var(--header-height)*3)
 }
