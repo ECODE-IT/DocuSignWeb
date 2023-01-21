@@ -11,6 +11,73 @@
 </head>
 <body>
 
+<div class="" id="adoptSignModal" tabindex="-1" role="dialog"
+     aria-labelledby="adoptSignModalLabel" aria-hidden="true">
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="col-8 p-1 bg-white">
+            <div class="col-12  border border-dark"
+                 style="border-left: 3px solid black !important; ">
+                <div class="row border-bottom">
+                    <div class="col-12 d-flex flex-row py-3">
+                        <p>
+                        <h5 class="font-weight-bold">
+                            My Signature and Intials</h5>
+                        </p>
+                        <button type="button" class="close ml-auto"
+                                v-on:click="closeModal()" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="col-12">
+                        <p>Choose a saved signature and initials or adopt new ones to use when signing the documents in
+                            this envelope.</p>
+                    </div>
+                </div>
+                <div class="row border-bottom bg-light py-2">
+                    <div class="col-12">
+                        <div class="row py-2 px-3">
+                            <div class="col-3 d-flex align-items-center">
+                                    <label>
+                                        <input type="radio" name="signatureType" value="saved" v-model="signatureType">
+                                        Saved
+                                    </label>
+                            </div>
+                            <div class="position-relative col-6 
+                               py-3 border border-right-0 border-primary"
+                                 style="border-radius: 10px !important;  border-width: 2px !important;">
+                                            <span class="small bg-white px-1 w-100 font-weight-bold position-absolute"
+                                                  style="top:-10px; left:20px;">
+                                                DocuSigned by:
+                                            </span>
+                                <img src="./images/sign.png" alt="Govinda" class="img-fluid"
+                                     style="height: 50px; width: auto;">
+                                <span class="small bg-white px-1 w-100 text-uppercase position-absolute"
+                                      style="bottom:-10px; left:20px;">
+                                                18552465DSAD
+                                            </span>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-around">
+                                <button type="button" class="btn">Edit</button>
+                                <!--Close button-->
+                                <button type="button" class="btn btn-sm fas fa-times"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-bottom py-2">
+                    <div class="col-12">
+                        <button class="btn btn-warning rounded-0 text-uppercase">
+                            USED SAVED
+                        </button>
+                        <button class="btn ml-2 rounded-0" v-on:click="closeModal()">
+                            ADOPT NEW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="lib/jquery/dist/jquery.min.js"></script>
