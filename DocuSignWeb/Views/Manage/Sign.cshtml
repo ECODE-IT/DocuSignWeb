@@ -1,0 +1,257 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/app-manage.css">
+    <link rel="stylesheet" href="~/css/app-manage-sign.css">
+}
+
+<div class="container-fluid" id="main">
+    <div class="row py-2" id="toolbar">
+        <div class="col-2">
+            <div class="dropdown">
+                <button class="btn w-100 text-left btn-light dropdown-toggle-split border border-dark rounded-0">
+                    user
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 d-flex justify-content-center">
+            @*Tool icons*@
+            <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-undo-alt"></i>
+            </button>
+            <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-redo-alt"></i>
+            </button>
+            <button class="btn btn-light rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-copy"></i>
+            </button>
+            <button class="btn btn-light border-right rounded-0 d-flex justify-content-center align-items-center">
+                <i class="fas fa-paste"></i>
+            </button>
+            <button class="btn btn-light border-right dropdown-toggle rounded-0 d-flex justify-content-center align-items-center">
+                137%
+            </button>
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <button class="btn btn-light border border-dark rounded-0">SHORTCUTS</button>
+        </div>
+    </div>
+    <div class="row d-flex align-items-stretch border-top" style="flex:1;">
+        <div class="col-md-2 overflow-y-scroll d-flex flex-column  app-bg-color-2" id="side-menu">
+            <div class="row bg-white">
+                <div class="col-12 px-0">
+                    <div class="input-group border rounded-0">
+                        <span class="input-group-text border-0 bg-transparent">
+                            <i class="fas fa-search"></i>
+                        </span><input placeholder="Search Fields" class="form-control border-0" type="text">
+                        <span class="ml-auto p-2">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-stretch flex-grow-1">
+                <div class="col-2 px-0">
+                    <div class="w-100 cursor-pointer border-bottom p-2 py-3 
+                                                d-flex justify-content-center align-items-center`"
+                         v-for="field in fields"
+                         v-on:click="setActiveField(field)"
+                         v-bind:class="field.active ? 'bg-white':''">
+                        <i v-bind:class="field.icon"></i>
+                    </div>
+                </div>
+                <div class="col-10 bg-white">
+                    <div class="text-uppercase text-start my-3 font-weight-bold">{{activeField.name}}</div>
+                    <div class="row">
+                        <div class="col px-0">
+                            <ul class="list-group">
+                                <li v-for="option in activeField.options" v-on:click="option.onClick"
+                                    class="list-group-item border-0 cursor-pointer bg-transparent
+                                                                                                 d-flex flex-row justify-content-start px-1">
+                                    <i class="fas d-flex align-items-center bg-warning p-1 mx-2"
+                                       v-bind:class="option.icon">
+                                    </i>
+                                    <span class="">{{option.name}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 overflow-y" id="middle-section">
+            <div class="row">
+                <div class="col-12  app-bg-color-2">
+                    <div class="row justify-content-center" id="docImagesContainer">
+                        <button v-for="signatures in components.signatures" class="draggable 
+                                btn btn-warning border-dark"
+                                data-toggle="modal" data-target="#adoptSignModal">
+                            <div class="font-weight-bold">Sign</div>
+                            <div>
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </button>
+                        <div v-for="image in docImages" class="col-11 my-2">
+                            <img v-bind:src="'/images/'+image" alt="" class="img-fluid border border-dark"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 overflow-y app-bg-color-2" id="page-summary">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div v-for="image in docImages" class="col-11 my-2">
+                            <img v-bind:src="'/images/'+image" alt="" class="img-thumbnail"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex flex-row text-uppercase justify-content-end border-top">
+            <button class="btn btn-light m-2">Back</button>
+            <button class="btn btn-warning rounded-0 m-2">Send</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade " id="adoptSignModal" tabindex="-1" role="dialog"
+     aria-labelledby="adoptSignModalLabel" aria-hidden="true">
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+        <div class="col-8 p-1 bg-white">
+            <div class="col-12  border border-dark"
+                 style="border-left: 3px solid black !important; ">
+                <div class="row border-bottom">
+                    <div class="col-12 d-flex flex-row py-3">
+                        <p>
+                            <h5 class="font-weight-bold text-capitalize">Adopt Your Signature</h5>
+                        </p>
+                        <button type="button" class="close ml-auto"  v-on:click="closeModal()" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row border-bottom pt-2">
+                    <div class="col-12">
+                        <p>Confirm your name</p>
+                        <p>
+                            <span class="text-danger">*</span>Required
+                        </p>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="fullName">
+                                        Full Name
+                                        <span
+                                            class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+                                    <input type="text" id="fullName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="initials">
+                                        Initials
+                                        <span
+                                            class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+                                    <input type="text" id="initials" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-3 d-flex flex-row">
+                        <div class="font-weight-bold
+                                                                                 text-uppercase text-primary border-bottom border-primary">
+                            SELECT STYLE
+                        </div>
+                        <div class="ml-3 font-weight-bold text-secondary text-uppercase">DRAW</div>
+                        <div class="ml-3 font-weight-bold text-secondary text-uppercase">UPLOAD</div>
+                    </div>
+                </div>
+                <div class="row border-bottom py-2">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 text-uppercase">
+                                        <span>PREVIEW</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 border rounded my-2 p-4">
+                                    <div class="row justify-content-start px-3">
+                                        <div class="position-relative col-5 
+                                                                                                    py-3 border border-right-0 border-primary"
+                                             style="border-radius: 10px !important;  border-width: 2px !important;">
+                                            <span class="small bg-white px-1 w-100 font-weight-bold position-absolute"
+                                                  style="top:-10px; left:20px;">
+                                                DocuSigned by:
+                                            </span>
+                                            <img src="./images/sign.png" alt="Govinda" class="img-fluid"
+                                                 style="height: 50px; width: auto;">
+                                            <span class="small bg-white px-1 w-100 text-uppercase position-absolute"
+                                                  style="bottom:-10px; left:20px;">
+                                                18552465DSAD
+                                            </span>
+                                        </div>
+                                        <div class="position-relative col-5 
+                                                                                                    py-3 border border-right-0 border-primary"
+                                             style="border-radius: 10px !important;  border-width: 2px !important;">
+                                            <span class="small bg-white px-1 w-100 font-weight-bold position-absolute"
+                                                  style="top:-10px; left:20px;">
+                                                DS
+                                            </span>
+                                            <img src="./images/short_sign.png" alt="Govinda" class="img-fluid"
+                                                 style="height: 50px; width: auto;">
+                                            <span class="small bg-white px-1 w-100 text-uppercase position-absolute"
+                                                  style="bottom:-10px; left:20px;">
+                                                &nbsp;
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="small mb-0">
+                                    By selecting Adopt and Sign, I agree that thus mark Will be the electronac
+                                    representation of
+                                    my signature or initials whenever I use it. I also un&rstand that
+                                    recaptents ot ebectronjc docurnents I Sign val be able to see my DocuSign IL), whvch Will
+                                    Include my emad address.
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row border-bottom py-2">
+                    <div class="col-12">
+                        <button class="btn btn-warning rounded-0 text-uppercase">
+                            ADopt and Sign
+                        </button>
+                        <button class="btn ml-2 rounded-0" v-on:click="closeModal()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="module" src="~/js/manage-sign.js"></script>
+}

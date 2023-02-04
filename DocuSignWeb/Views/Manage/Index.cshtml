@@ -4,17 +4,17 @@
 }
 
 @section Styles{
-    <link rel="stylesheet" href="~/css/app-home.css">
+    <link rel="stylesheet" href="~/css/app-manage.css">
     <link rel="stylesheet" href="~/css/app-side-menu.css">
     <link rel="stylesheet" href="~/css/app-documents.css">
 }
 
 <div class="container-fluid" id="main">
-    <section class="content-wrapper row">
-        <div class="col-md-2" id="side-menu">
+    <div class="row d-flex align-items-stretch" style="flex: 1;">
+        <div class="col-md-2 app-bg-color overflow-y" id="side-menu">
             @await Component.InvokeAsync(typeof(SideMenuViewComponent))
         </div>
-        <div class="col-md-10" id="documents">
+        <div class="col-md-10 overflow-y" id="middle-section">
             <div class="row">
                 <div id="documents-header" class="col-12 py-3 pl-4 pr-5 border-top-0 border border-bottom">
                     <div class="row">
@@ -83,7 +83,7 @@
                                     <div class="progress">
                                         <div class="progress-bar" aria-valuenow="50" aria-valuemin="0"
                                              aria-valuemax="100" v-bind:style="'width: '
-                                                + doc.status.percentageCompleted +'%;'">
+                                                                                    + doc.status.percentageCompleted +'%;'">
                                         </div>
                                     </div>
                                 </div>
@@ -101,10 +101,11 @@
                         </div>
                         <div class="t-col t-col-2 align-items-end pr-3">
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" aria-expanded="false"
+                                <a asp-action="Sign" asp-controller="Manage" 
+                                   class="btn btn-primary dropdown-toggle" aria-expanded="false"
                                         data-bs-toggle="dropdown" type="button">
                                     Sign
-                                </button>
+                                </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">First Item</a>
                                     <a class="dropdown-item" href="#">Second Item</a>
@@ -116,10 +117,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </div>
 
 @section Scripts
 {
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="~/js/manage-index.js"></script>
 }

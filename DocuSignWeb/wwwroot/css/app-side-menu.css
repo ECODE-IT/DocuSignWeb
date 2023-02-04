@@ -4,7 +4,7 @@
     background-color: transparent;
 }
 .list-group .selected{
-    background-color: var(--color-background-selected) !important;
+    background-color: var(--color-bg-selected) !important;
     font-weight: bold;
 }
 #start-now{

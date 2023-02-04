@@ -1,4 +1,3 @@
-﻿@using DocuSignWeb.ViewComponents
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +8,9 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-@await Component.InvokeAsync(typeof(HeaderViewComponent))
 
 @RenderBody()
-<footer class="fixed-bottom border-top d-flex align-items-center">
-    <div class="my-auto container-fluid  text-muted bg-white">
-        <div class="row  ">
-            <div class="col-12">
-                <span>© 2023 - DocuSignWeb - <a href="/Manage/Privacy">Privacy</a></span>
-            </div>
-        </div>
-    </div>
-</footer>
+
 @await Html.PartialAsync("_ScriptsPartial")
 @await RenderSectionAsync("Scripts", required: false)
 </body>
